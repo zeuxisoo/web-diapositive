@@ -1,0 +1,22 @@
+<?php
+return [
+    'debug'    => true,
+    'database' => [
+        'driver'    => 'sqlite',
+        'host'      => '',
+        'username'  => '',
+        'password'  => '',
+        'database'  => STORAGE_ROOT.'/default.sqlite',
+        'charset'   => 'utf8',
+        'collation' => 'utf8_general_ci',
+        'prefix'    => 'hws_',
+    ],
+    'cookie' => [
+        'life_time'  => '20 minutes',
+        'path'       => '/',
+        'domain'     => null,
+        'secure'     => false,
+        'httponly'   => false,
+        'secret_key' => 'Your Key Here',
+    ],
+];

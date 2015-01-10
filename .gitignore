@@ -1,0 +1,5 @@
+config/default.php
+config/production.php
+storage/*.sqlite
+vendor/
+composer.phar
