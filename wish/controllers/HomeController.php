@@ -6,7 +6,7 @@ use Wish\Bases\Controller;
 class HomeController extends Controller {
 
     public function index() {
-        echo "HomeController:index";
+        $this->render('home/index.html');
     }
 
 }
