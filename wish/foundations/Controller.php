@@ -1,5 +1,5 @@
 <?php
-namespace Wish\Bases;
+namespace Wish\Foundations;
 
 use Slim\Slim;
 

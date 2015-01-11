@@ -1,7 +1,7 @@
 <?php
 namespace Wish\Controllers;
 
-use Wish\Bases\Controller;
+use Wish\Foundations\Controller;
 
 class HomeController extends Controller {
 
