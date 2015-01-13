@@ -7,7 +7,7 @@ date_default_timezone_set("Asia/Hong_Kong");
 define('WWW_ROOT',     dirname(__DIR__));
 define('VENDOR_ROOT',  WWW_ROOT.'/vendor');
 define('CONFIG_ROOT',  WWW_ROOT.'/config');
-define('APP_ROOT',     WWW_ROOT.'/wish');
+define('APP_ROOT',     WWW_ROOT.'/diapositive');
 define('STORAGE_ROOT', WWW_ROOT.'/storage');
 
 require_once VENDOR_ROOT.'/autoload.php';

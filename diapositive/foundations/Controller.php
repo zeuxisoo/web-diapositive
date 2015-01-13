@@ -1,5 +1,5 @@
 <?php
-namespace Wish\Foundations;
+namespace Diapositive\Foundations;
 
 use Slim\Slim;
 
