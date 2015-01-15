@@ -1,0 +1,32 @@
+{% if flash.error %}
+    <div class="row">
+        <div class="column">
+            <div class="ui error message">
+                <strong>Error!</strong>
+                {{ flash.error }}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if flash.warning %}
+    <div class="row">
+        <div class="column">
+            <div class="ui warning message">
+                <strong>Warning!</strong>
+                {{ flash.warning }}
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if flash.success %}
+    <div class="row">
+        <div class="column">
+            <div class="ui success message">
+                <strong>Success!</strong>
+                {{ flash.success }}
+            </div>
+        </div>
+    </div>
+{% endif %}

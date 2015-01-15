@@ -5,7 +5,9 @@
         "slim/views": "0.1.*",
         "slim/extras": "~2.0",
         "j4mie/paris": "~1.5",
-        "twig/twig": "~1.16"
+        "twig/twig": "~1.16",
+        "zeuxisoo/core-validator": "@dev",
+        "pimple/pimple": "~3.0"
     },
     "require-dev": {
         "symfony/var-dumper": "~2.6"

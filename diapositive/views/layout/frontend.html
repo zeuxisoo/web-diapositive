@@ -21,12 +21,14 @@
         </a>
         <div class="right menu">
             <div class="item">
-                <div class="ui button">Sign up</div>
+                <a href="{{ urlFor('index.signup') }}" class="ui button">Sign up</a>
             </div>
         </div>
     </div>
 </div>
 <div class="ui page grid main">
+    {% include 'shared/flash-message.html' %}
+
     <div class="row">
         <div class="column">
             {% block container %}
