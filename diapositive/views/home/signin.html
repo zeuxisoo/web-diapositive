@@ -1,0 +1,25 @@
+{% extends 'layout/frontend.html' %}
+
+{% block container %}
+<div class="ui form segment">
+    <h3 class="ui dividing header">Sign in</h3>
+    <form method="post" action="{{ urlFor('index.signin') }}">
+        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
+        <div class="field">
+            <label>Account</label>
+            <input type="text" name="account" placeholder="Account">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        <div class="inline field">
+            <div class="ui checkbox">
+                <input type="checkbox" name="remember" value="y">
+                <label>Remember me</label>
+            </div>
+        </div>
+        <input type="submit" class="ui submit button" value="Submit">
+    </form>
+</div>
+{% endblock %}

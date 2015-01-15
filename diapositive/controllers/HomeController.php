@@ -5,6 +5,8 @@ use Zeuxisoo\Core\Validator;
 use Diapositive\Foundations\Controller;
 use Diapositive\Foundations\Model;
 use Diapositive\Models;
+use Diapositive\Helpers\Authorize;
+use Diapositive\Helpers\Secure;
 
 class HomeController extends Controller {
 
@@ -52,6 +54,60 @@ class HomeController extends Controller {
             $this->redirectTo('index.signup');
         }else{
             $this->render('home/signup.html');
+        }
+    }
+
+    public function signin() {
+        if ($this->request->isPost() === true) {
+            $account  = $this->request->post('account');
+            $password = $this->request->post('password');
+            $remember = $this->request->post('remember');
+
+            $validator = Validator::factory($this->request->post());
+            $validator->add('account', 'Please enter account')->rule('required')
+                      ->add('password', 'Please enter password')->rule('required');
+
+            $valid_type     = 'error';
+            $valid_message  = '';
+            $valid_redirect = "index.signin";
+
+            if ($validator->inValid() === true) {
+                $valid_message = $validator->firstError();
+            }else{
+                if (strpos($account, '@') === false) {
+                    $user = Models\User::where('username', $account)->findOne();
+                }else{
+                    $user = Models\User::where('email', $account)->findOne();
+                }
+
+                if (empty($user->username) === true) {
+                    $valid_message = 'The user not exists';
+                }else if (password_verify($password, $user->password) === false) {
+                    $valid_message = 'Password not match';
+                }else{
+                    if ($remember === 'y') {
+                        $config       = $this->app->config('app.config');
+                        $signin_token = Secure::randomString();
+
+                        $this->app->setCookie(
+                            $config['remember']['name'],
+                            Secure::createKey($user->id, $signin_token, $config['cookie']['secret_key']),
+                            time() + $config['remember']['life_time']
+                        );
+                    }
+
+                    Authorize::initLoginSession($user);
+
+                    $valid_type     = "success";
+                    $valid_message  = "Welcome back";
+                    $valid_redirect = "index.index";
+                }
+            }
+
+            $this->flash($valid_type, $valid_message);
+            $this->redirectTo($valid_redirect);
+        }else{
+            $this->render('home/signin.html');
         }
     }
 

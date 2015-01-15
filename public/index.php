@@ -15,6 +15,7 @@ require_once VENDOR_ROOT.'/autoload.php';
 use Slim\Slim;
 use Slim\Views;
 use Slim\Extras;
+use Diapositive\Hooks\SessionManager;
 
 $config_default    = require_once CONFIG_ROOT.'/default.php';
 $config_production = CONFIG_ROOT.'/production.php';
@@ -93,5 +94,15 @@ $view->parserExtensions = [
 ];
 
 require_once APP_ROOT.'/routes.php';
+
+$app->config('app.config', $config);
+
+$app->hook('slim.before.dispatch', function() use ($app) {
+    $session_manager = new SessionManager();
+    $session_manager->setLoginSession();
+
+    $app->view()->setData('config',  $app->container['settings']);
+    $app->view()->setData('session', $_SESSION);
+});
 
 $app->run();
