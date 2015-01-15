@@ -22,7 +22,7 @@
         <div class="right menu">
             <div class="item">
                 {% if session.user %}
-                    <a href="#" class="ui button">Sign out</a>
+                    <a href="{{ urlFor('index.signout') }}" class="ui button">Sign out</a>
                 {% else %}
                     <a href="{{ urlFor('index.signup') }}" class="ui button green">Sign up</a>
                     <a href="{{ urlFor('index.signin') }}" class="ui button">Sign in</a>

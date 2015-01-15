@@ -111,4 +111,10 @@ class HomeController extends Controller {
         }
     }
 
+    public function signout() {
+        Authorize::resetLoginSession($this->app);
+
+        $this->redirectTo('index.index');
+    }
+
 }
