@@ -2,14 +2,24 @@
 return [
     'debug'    => true,
     'database' => [
-        'driver'    => 'sqlite',
-        'host'      => '',
-        'username'  => '',
-        'password'  => '',
-        'database'  => STORAGE_ROOT.'/default.sqlite',
-        'charset'   => 'utf8',
-        'collation' => 'utf8_general_ci',
-        'prefix'    => 'hws_',
+        'default'     => 'sqlite',
+        'connections' => [
+            'sqlite' => [
+                'driver'   => 'sqlite',
+                'database' => STORAGE_ROOT.'/default.sqlite',
+                'prefix'   => 'wish_',
+            ],
+            'mysql'  => [
+                'driver'    => 'mysql',
+                'host'      => 'localhost',
+                'database'  => 'wish',
+                'username'  => 'user',
+                'password'  => 'pass',
+                'charset'   => 'utf8',
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => 'wish_',
+            ]
+        ]
     ],
     'cookie' => [
         'life_time'  => '20 minutes',
@@ -19,4 +29,8 @@ return [
         'httponly'   => false,
         'secret_key' => 'Your Key Here',
     ],
+    'remember' => [
+        'name'      => 'r',
+        'life_time' => 315360000,
+    ]
 ];
