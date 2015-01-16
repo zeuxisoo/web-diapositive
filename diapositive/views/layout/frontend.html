@@ -18,16 +18,17 @@
         <div class="title item">
             <b>Diapositive</b>
         </div>
-        <a class="item">
+        <a class="item" href="{{ urlFor('index.index') }}">
             <i class="home icon"></i> Home
         </a>
         <div class="right menu">
             <div class="item">
                 {% if session.user %}
+                    <a href="{{ urlFor('slideshow.create') }}" class="ui button blue">Create</a>
                     <a href="{{ urlFor('index.signout') }}" class="ui button">Sign out</a>
                 {% else %}
-                    <a href="{{ urlFor('index.signup') }}" class="ui button green">Sign up</a>
-                    <a href="{{ urlFor('index.signin') }}" class="ui button">Sign in</a>
+                    <a href="{{ urlFor('index.signup') }}" class="ui button">Sign up</a>
+                    <a href="{{ urlFor('index.signin') }}" class="ui button green">Sign in</a>
                 {% endif %}
             </div>
         </div>

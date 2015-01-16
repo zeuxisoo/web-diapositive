@@ -1,35 +1,7 @@
 {% extends 'layout/frontend.html' %}
 
 {% block container %}
-<div class="ui segment drop-area">
-    <label for="file" class="ui icon button">
-        <i class="file icon"></i> Click to open the file browser
-    </label>
-    <input type="file" name="files[]" multiple="multiple" id="file" style="display:none">
-    or Drag and Drop Files Here
-</div>
-<div class="ui segment file-area">
-    <div class="ui message no-margin upload-first">Please upload file first</div>
-    <div class="ui four cards files hidden">
-    </div>
-</div>
 <div class="ui segment">
-    <input type="submit" class="ui button" value="Generate">
-</div>
 
-<script id="preview-file" type="text/x-handlebars-template">
-    {% raw %}
-        <div class="card" id="preview-file-{{id}}">
-            <div class="image">
-                <img src="http://placehold.it/100.png" alt="{{ file }}">
-            </div>
-            <div class="extra">
-                <div class="ui tiny progress">
-                    <div class="bar"></div>
-                    <div class="label">0%</div>
-                </div>
-            </div>
-        </div>
-    {% endraw %}
-</script>
+</div>
 {% endblock %}
