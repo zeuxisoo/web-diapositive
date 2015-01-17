@@ -8,9 +8,13 @@ var renderTemplate = function(templateSelector, params) {
         $('.ui.checkbox').checkbox();
 
         $(".drop-area").dmUploader({
-            url              : '/upload',
+            url              : '/slideshow/upload',
             dataType         : 'json',
+            fileName         : 'file',
             allowedTypes     : 'image/*',
+            extraData        : {
+                'csrf_token': $("meta[name=csrf-token]").attr('content')
+            },
             onNewFile        : function(id, file) {
                 if (id === 0) {
                     $(".file-area > .upload-first").hide();
@@ -32,15 +36,23 @@ var renderTemplate = function(templateSelector, params) {
 
                     reader.readAsDataURL(file);
                 }else{
-                    $('#demo-files').find('.demo-image-preview').remove();
+                    $("#preview-file-" + id).find("img").remove();
                 }
             },
-            onUploadProgress : function() {
+            onUploadProgress : function(id, percent) {
+                var progressBar = $("#preview-file-" + id).find('.progress')
 
+                progressBar.progress({ percent: percent });
+                progressBar.find('.label').text(percent + "%");
             },
             onUploadSuccess  : function(id, data) {
-
             },
+            onUploadError    : function(id, message) {
+                var progressBar = $("#preview-file-" + id).find('.progress')
+
+                progressBar.progress({ percent: 0 });
+                progressBar.find('.label').text("Error!");
+            }
         });
 
         $(".drop-area")
