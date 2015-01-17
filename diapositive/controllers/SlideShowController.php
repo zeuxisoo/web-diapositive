@@ -5,6 +5,7 @@ use Diapositive\Foundations\Controller;
 use Upload\Storage\FileSystem;
 use Upload\File;
 use Upload\Validation;
+use Intervention\Image\ImageManager;
 
 class SlideShowController extends Controller {
 
@@ -32,6 +33,16 @@ class SlideShowController extends Controller {
 
         try {
             $file->upload();
+
+            // Covert to jpg format
+            if ($file->getExtension() != "jpg") {
+                $image_file_path = $storage_path.'/'.$file->getNameWithExtension();
+
+                $image_maanger = new ImageManager();
+                $image_maanger->make($image_file_path)->save($storage_path.'/'.$file->getName().'.jpg', 100);
+
+                unlink($image_file_path);
+            }
 
             echo json_encode(['status' => 'ok']);
         }catch(\Exception $e) {
