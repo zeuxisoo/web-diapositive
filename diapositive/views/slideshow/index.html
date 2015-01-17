@@ -1,0 +1,28 @@
+{% extends 'layout/frontend.html' %}
+
+{% block container %}
+<div class="ui segment drop-area">
+    <table class="ui celled striped table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Job Id</th>
+                <th>SlideShow</th>
+                <th>Status</th>
+                <th>Create At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ job.job_token }}</td>
+                    <td>{{ job.slideshow_uuid }}</td>
+                    <td>{{ job.status }}</td>
+                    <td>{{ job.create_at | timeago }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

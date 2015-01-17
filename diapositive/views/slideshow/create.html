@@ -14,7 +14,10 @@
     </div>
 </div>
 <div class="ui segment">
-    <input type="submit" class="ui button" value="Generate">
+    <form action="{{ urlFor('slideshow.create') }}" method="post" style="padding:0px;margin:0px;">
+        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
+        <input type="submit" class="ui button" value="Generate">
+    </form>
 </div>
 
 <script id="preview-file" type="text/x-handlebars-template">

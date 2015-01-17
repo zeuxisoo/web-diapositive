@@ -21,6 +21,13 @@ return [
             ]
         ]
     ],
+    'queue' => [
+        'redis' => [
+            'host'     => 'localhost',
+            'port'     => 6379,
+            'database' => 0
+        ]
+    ],
     'cookie' => [
         'life_time'  => '20 minutes',
         'path'       => '/',
