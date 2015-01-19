@@ -11,7 +11,8 @@
         "codeguy/upload": "dev-master#6dd8917c1549cfaea2dbfc612e676ea7b78adc83",
         "intervention/image": "~2.0",
         "chrisboulton/php-resque": "dev-master#c335bc35558e0683f95c3fd5dd11a5817c0a761f",
-        "nesbot/carbon": "~1.13"
+        "nesbot/carbon": "~1.13",
+        "mikehaertl/php-shellcommand": "~1.0"
     },
     "require-dev": {
         "symfony/var-dumper": "~2.6"
