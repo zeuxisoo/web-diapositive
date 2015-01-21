@@ -5,7 +5,7 @@ $app = new Diapositive\Application();
 $app->registerConfig();
 $app->registerAutoLoad();
 
-$storage_path = STORAGE_ROOT.'/slideshows/54ba9c58b0bd6';
+$storage_path = STORAGE_ROOT.'/slideshows/54bf688e545a2';
 
 // Get images
 $images = new RegexIterator(
