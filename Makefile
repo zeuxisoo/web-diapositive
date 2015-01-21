@@ -12,3 +12,7 @@ redis:
 
 worker:
 	VVERBOSE=1 COUNT=1 QUEUE='*' REDIS_BACKEND=localhost:6379 REDIS_BACKEND_DB=0 APP_INCLUDE=./diapositive/jobs.php ./vendor/bin/resque
+
+clear-mp4:
+	find ./storage/slideshows -name "*.mp4" -exec rm -rf {} \;
+	find ./storage/slideshows -name "*.txt" -exec rm -rf {} \;
