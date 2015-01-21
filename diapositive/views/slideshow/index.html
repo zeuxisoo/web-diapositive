@@ -10,16 +10,20 @@
                 <th>SlideShow</th>
                 <th>Status</th>
                 <th>Create At</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             {% for job in jobs %}
-                <tr>
+                <tr class="slideshows slideshow-{{ job.slideshow_uuid }}">
                     <td>{{ loop.index }}</td>
                     <td>{{ job.job_token }}</td>
                     <td>{{ job.slideshow_uuid }}</td>
-                    <td>{{ job.status }}</td>
+                    <td class="status">{{ job.status }}</td>
                     <td>{{ job.create_at | timeago }}</td>
+                    <td class="action">
+                        <a href="{{ urlFor('slideshow.download', {'uuid': job.slideshow_uuid}) }}" class="ui purple button mini disabled"><i class="download icon"></i> Download</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

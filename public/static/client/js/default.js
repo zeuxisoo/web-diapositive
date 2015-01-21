@@ -62,6 +62,27 @@ var renderTemplate = function(templateSelector, params) {
             .on('dragleave', function(e) {
                 $(this).removeClass('warning message');
             });
+
+        if ($(".slideshows").length > 0) {
+            var checkSlideShowStatus = function() {
+                $.getJSON('/slideshow/status', function(slideshows) {
+                    slideshows.forEach(function(slideshow) {
+                        var slideshowRow = $(".slideshow-" + slideshow.uuid);
+
+                        slideshowRow.find(".status").text(slideshow.status);
+
+                        if (slideshow.status.toLowerCase() == "finish") {
+                            slideshowRow.find(".action a:first").removeClass('disabled');
+                        }else{
+                            slideshowRow.find(".action a:first").addClass('disabled');
+                        }
+                    });
+                });
+            };
+            checkSlideShowStatus();
+
+            setInterval(checkSlideShowStatus, 5000);
+        }
     });
 
 })(jQuery);

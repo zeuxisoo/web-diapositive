@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "627f637b81a871fd86005c1d66cb2c57",
+    "hash": "130e45d158bf4e081e62fe22e85b0ed7",
     "packages": [
         {
             "name": "chrisboulton/php-resque",
@@ -702,6 +702,52 @@
                 "templating"
             ],
             "time": "2014-12-09 23:48:51"
+        },
+        {
+            "name": "songlipeng2003/php-x-sendfile",
+            "version": "v0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/songlipeng2003/php-x-sendfile.git",
+                "reference": "608e083ce5c8f5bd935148560cc6d5daaaf0d1e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/songlipeng2003/php-x-sendfile/zipball/608e083ce5c8f5bd935148560cc6d5daaaf0d1e3",
+                "reference": "608e083ce5c8f5bd935148560cc6d5daaaf0d1e3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "XSendfile": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Thinking Song",
+                    "email": "songlipeng2003@gmail.com"
+                }
+            ],
+            "description": "php-x-sendfile",
+            "homepage": "https://github.com/songlipeng2003/php-x-sendfile",
+            "keywords": [
+                "apache",
+                "nginx",
+                "sendfile",
+                "x-sendfile"
+            ],
+            "time": "2014-03-14 09:24:47"
         },
         {
             "name": "symfony/class-loader",

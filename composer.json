@@ -12,7 +12,8 @@
         "intervention/image": "~2.0",
         "chrisboulton/php-resque": "dev-master#c335bc35558e0683f95c3fd5dd11a5817c0a761f",
         "nesbot/carbon": "~1.13",
-        "mikehaertl/php-shellcommand": "~1.0"
+        "mikehaertl/php-shellcommand": "~1.0",
+        "songlipeng2003/php-x-sendfile": "0.3.*"
     },
     "require-dev": {
         "symfony/var-dumper": "~2.6"

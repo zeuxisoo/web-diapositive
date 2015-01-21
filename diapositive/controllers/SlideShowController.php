@@ -10,6 +10,7 @@ use Diapositive\Foundations\Controller;
 use Diapositive\Foundations\Model;
 use Diapositive\Helpers\FileSystem as FileSystemHelper;
 use Diapositive\Models;
+use XSendfile\XSendfile;
 
 class SlideShowController extends Controller {
 
@@ -103,6 +104,43 @@ class SlideShowController extends Controller {
         }catch(\Exception $e) {
             $this->app->halt(500, json_encode($file->getErrors()));
         }
+    }
+
+    public function download($uuid) {
+        $job = Models\Job::where('slideshow_uuid', $uuid)->findOne();
+
+        $valid_type    = 'error';
+        $valid_message = '';
+
+        if (empty($job->id) === true) {
+            $valid_message = 'Can not found video record';
+        }else{
+            $video_path = STORAGE_ROOT.'/slideshows/'.$job->slideshow_uuid.'/concat.mp4';
+
+            if (is_file($video_path) === true && file_exists($video_path) === true) {
+                XSendfile::xSendfile($video_path, "SlideShow-".$job->slideshow_uuid);
+                exit;
+            }else{
+                $valid_message = 'Can not found video file';
+            }
+        }
+
+        $this->flash($valid_type, $valid_message);
+        $this->redirectTo('slideshow.index');
+    }
+
+    public function status() {
+        $jobs = Models\Job::where('user_id', $_SESSION['user']['id'])->findMany();
+
+        $json = [];
+        foreach($jobs as $job) {
+            $json[] = [
+                'uuid'   => $job->slideshow_uuid,
+                'status' => $job->status,
+            ];
+        }
+
+        echo json_encode($json);
     }
 
 }
