@@ -82,13 +82,20 @@ class SlideShowController extends Controller {
         try {
             $file->upload();
 
-            // Covert to jpg format
+            // Covert to jpg format and resize to same width and height
+            $image_file_path = $storage_path.'/'.$file->getNameWithExtension();
+
+            $image_manager = new ImageManager();
+            $image_manager->canvas(500, 500, '#000000')->insert(
+                $image_manager->make($image_file_path)->resize(500, null, function($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                }),
+                'center'
+            )->save($storage_path.'/'.$file->getName().'.jpg', 100);
+
+            // Delete the file extension is not .jpg file
             if ($file->getExtension() != "jpg") {
-                $image_file_path = $storage_path.'/'.$file->getNameWithExtension();
-
-                $image_maanger = new ImageManager();
-                $image_maanger->make($image_file_path)->save($storage_path.'/'.$file->getName().'.jpg', 100);
-
                 unlink($image_file_path);
             }
 
